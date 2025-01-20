@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Setup llvm
+      run: |
+        bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -29,6 +32,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Setup llvm
+      run: |
+        bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -47,6 +53,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Setup llvm
+      run: |
+        bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
     - name: Build
       run: |
         mkdir .zig && cd .zig

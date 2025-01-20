@@ -37,15 +37,26 @@ jobs:
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
         zig build -Doptimize=ReleaseSmall -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl"
-        - name: Upload a Build Artifact
+    - name: Upload a Build Artifact
     - uses: actions/upload-artifact@v4.6.0
       with:
         name: Small
         path: ./zig-out/**
 
-
-
-
-
-
-    
+  EZ:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build
+      run: |
+        mkdir .zig && cd .zig
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2847+db8ed730e.tar.xz"
+        tar -xf zig.tar.xz && rm zig.tar.xz
+        mv * zig && cd zig && export PATH=$PATH:$PWD
+        cd ../..
+        zig build
+    - name: Upload a Build Artifact
+    - uses: actions/upload-artifact@v4.6.0
+      with:
+        name: EZ
+        path: ./zig-out/**

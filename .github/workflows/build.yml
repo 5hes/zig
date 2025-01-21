@@ -28,7 +28,7 @@ jobs:
     - name: Help
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-bootstrap-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
@@ -45,11 +45,11 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-bootstrap-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
+        zig build -Doptimize=ReleaseFast -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -92,11 +92,11 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-bootstrap-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
+        zig build -Doptimize=ReleaseSmall -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -139,7 +139,7 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-bootstrap-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
@@ -186,11 +186,11 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-bootstrap-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
+        zig build -Doptimize=ReleaseSmall -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -233,11 +233,11 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-bootstrap-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
+        zig build -Doptimize=ReleaseFast -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -280,11 +280,11 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-bootstrap-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
+        zig build -Doptimize=ReleaseSmall -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -331,7 +331,7 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-bootstrap-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
@@ -378,11 +378,11 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-bootstrap-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dsingle-threaded=true -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
+        zig build -Doptimize=ReleaseSmall -Dsingle-threaded=true -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -425,7 +425,7 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-bootstrap-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
@@ -472,11 +472,11 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-bootstrap-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dsingle-threaded=true -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
+        zig build -Doptimize=ReleaseSmall -Dsingle-threaded=true -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -519,11 +519,11 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-bootstrap-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dsingle-threaded=true -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
+        zig build -Doptimize=ReleaseFast -Dsingle-threaded=true -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -566,11 +566,11 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-bootstrap-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dsingle-threaded=true -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
+        zig build -Doptimize=ReleaseSmall -Dsingle-threaded=true -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dvalue-interpret-mode=direct -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -591,6 +591,100 @@ jobs:
           baseline_small_signle.7z
           baseline_small_signle.tar
           baseline_small_signle.tar.xz
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.6.0
+      with:
+        name: baseline_Small_signle
+        path: ./zig-out/**
+    - name: Check zig binary size
+      run: |
+        ls -l zig-out/bin/
+        ls -lh zig-out/bin/
+
+  x86_64_Small:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4.2.2
+    - name: Setup llvm
+      run: |
+        curl -o llvm.sh https://apt.llvm.org/llvm.sh
+        sudo chmod 777 llvm.sh
+        sudo ./llvm.sh 19 all
+    - name: Build
+      run: |
+        mkdir .zig && cd .zig
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-bootstrap-0.14.0-dev.2847+db8ed730e.tar.xz"
+        tar -xf zig.tar.xz && rm zig.tar.xz
+        mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
+        cd ../..
+        zig build -Doptimize=ReleaseSmall -Dstrip=true -Dtarget="x86_64-linux-musl" -Dvalue-interpret-mode=direct -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
+    - name: achive
+      run: |
+        mkdir tmp
+        cp -rp zig-out/ tmp/
+        cd tmp
+        mv zig-out nightly
+        tar -cf x86_64_small.tar nightly
+        tar -cJf x86_64_small.tar.xz nightly
+        7z a x86_64_small.7z nightly
+        rm -rf nightly
+        mv * ..
+    - name: GH Release
+      uses: softprops/action-gh-release@v2.2.1
+      with:
+        tag_name: nightly
+        make_latest: true
+        files: |
+          x86_64_small.7z
+          x86_64_small.tar
+          x86_64_small.tar.xz
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.6.0
+      with:
+        name: baseline_Small_signle
+        path: ./zig-out/**
+    - name: Check zig binary size
+      run: |
+        ls -l zig-out/bin/
+        ls -lh zig-out/bin/
+
+  x86_64_Fast:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4.2.2
+    - name: Setup llvm
+      run: |
+        curl -o llvm.sh https://apt.llvm.org/llvm.sh
+        sudo chmod 777 llvm.sh
+        sudo ./llvm.sh 19 all
+    - name: Build
+      run: |
+        mkdir .zig && cd .zig
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-bootstrap-0.14.0-dev.2847+db8ed730e.tar.xz"
+        tar -xf zig.tar.xz && rm zig.tar.xz
+        mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
+        cd ../..
+        zig build -Doptimize=ReleaseFast -Dstrip=true -Dtarget="x86_64-linux-musl" -Dvalue-interpret-mode=direct -fno-reference-trace -Dskip-debug -Dvalue-tracing=false --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
+    - name: achive
+      run: |
+        mkdir tmp
+        cp -rp zig-out/ tmp/
+        cd tmp
+        mv zig-out nightly
+        tar -cf x86_64_fast.tar nightly
+        tar -cJf x86_64_fast.tar.xz nightly
+        7z a x86_64_fast.7z nightly
+        rm -rf nightly
+        mv * ..
+    - name: GH Release
+      uses: softprops/action-gh-release@v2.2.1
+      with:
+        tag_name: nightly
+        make_latest: true
+        files: |
+          x86_64_fast.7z
+          x86_64_fast.tar
+          x86_64_fast.tar.xz
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.6.0
       with:

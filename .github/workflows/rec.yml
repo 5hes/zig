@@ -12,13 +12,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+        with:
+          fetch-depth: 0
       - name: Revert last merge commit
         run: |
           git config --local user.name "actions"
           git config --local user.email "actions@github.com"
           git log
-          git revert -m 1 216e0f3
+          git revert -m 1 216e0f37306d5cded92d547f65f9c2566d7b1523
           git commit -m "Revert code to buildable"
           
           git push origin master_bak

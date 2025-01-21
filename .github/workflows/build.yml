@@ -23,7 +23,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-
     - name: Help
       run: |
         mkdir .zig && cd .zig
@@ -36,7 +35,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-
+    - name: Setup llvm
+      run: |
+        curl -o llvm.sh https://apt.llvm.org/llvm.sh
+        sudo chmod 777 llvm.sh
+        sudo ./llvm.sh 19 all
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -79,7 +82,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-
+    - name: Setup llvm
+      run: |
+        curl -o llvm.sh https://apt.llvm.org/llvm.sh
+        sudo chmod 777 llvm.sh
+        sudo ./llvm.sh 19 all
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -122,7 +129,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-
+    - name: Setup llvm
+      run: |
+        curl -o llvm.sh https://apt.llvm.org/llvm.sh
+        sudo chmod 777 llvm.sh
+        sudo ./llvm.sh 19 all
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -165,7 +176,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-
+    - name: Setup llvm
+      run: |
+        curl -o llvm.sh https://apt.llvm.org/llvm.sh
+        sudo chmod 777 llvm.sh
+        sudo ./llvm.sh 19 all
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -208,7 +223,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-
+    - name: Setup llvm
+      run: |
+        curl -o llvm.sh https://apt.llvm.org/llvm.sh
+        sudo chmod 777 llvm.sh
+        sudo ./llvm.sh 19 all
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -251,7 +270,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-
+    - name: Setup llvm
+      run: |
+        curl -o llvm.sh https://apt.llvm.org/llvm.sh
+        sudo chmod 777 llvm.sh
+        sudo ./llvm.sh 19 all
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -298,7 +321,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-
+    - name: Setup llvm
+      run: |
+        curl -o llvm.sh https://apt.llvm.org/llvm.sh
+        sudo chmod 777 llvm.sh
+        sudo ./llvm.sh 19 all
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -341,7 +368,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-
+    - name: Setup llvm
+      run: |
+        curl -o llvm.sh https://apt.llvm.org/llvm.sh
+        sudo chmod 777 llvm.sh
+        sudo ./llvm.sh 19 all
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -384,7 +415,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-
+    - name: Setup llvm
+      run: |
+        curl -o llvm.sh https://apt.llvm.org/llvm.sh
+        sudo chmod 777 llvm.sh
+        sudo ./llvm.sh 19 all
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -427,7 +462,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-
+    - name: Setup llvm
+      run: |
+        curl -o llvm.sh https://apt.llvm.org/llvm.sh
+        sudo chmod 777 llvm.sh
+        sudo ./llvm.sh 19 all
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -470,7 +509,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-
+    - name: Setup llvm
+      run: |
+        curl -o llvm.sh https://apt.llvm.org/llvm.sh
+        sudo chmod 777 llvm.sh
+        sudo ./llvm.sh 19 all
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -513,7 +556,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-
+    - name: Setup llvm
+      run: |
+        curl -o llvm.sh https://apt.llvm.org/llvm.sh
+        sudo chmod 777 llvm.sh
+        sudo ./llvm.sh 19 all
     - name: Build
       run: |
         mkdir .zig && cd .zig

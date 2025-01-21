@@ -47,7 +47,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig" -Ddev=full 
+        zig build -Doptimize=ReleaseFast -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -94,7 +94,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig" -Ddev=full
+        zig build -Doptimize=ReleaseSmall -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -141,7 +141,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig" -Ddev=full
+        zig build -Doptimize=ReleaseFast -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -188,7 +188,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig" -Ddev=full
+        zig build -Doptimize=ReleaseSmall -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -235,7 +235,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig" -Ddev=full
+        zig build -Doptimize=ReleaseFast -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -282,7 +282,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig" -Ddev=full
+        zig build -Doptimize=ReleaseSmall -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -333,7 +333,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dsingle-threaded=true -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig" -Ddev=full
+        zig build -Doptimize=ReleaseFast -Dsingle-threaded=true -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -380,7 +380,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dsingle-threaded=true -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig" -Ddev=full
+        zig build -Doptimize=ReleaseSmall -Dsingle-threaded=true -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -427,7 +427,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dsingle-threaded=true -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig" -Ddev=full
+        zig build -Doptimize=ReleaseFast -Dsingle-threaded=true -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -474,7 +474,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dsingle-threaded=true -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig" -Ddev=full
+        zig build -Doptimize=ReleaseSmall -Dsingle-threaded=true -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp
@@ -521,7 +521,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dsingle-threaded=true -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig" -Ddev=full
+        zig build -Doptimize=ReleaseFast -Dsingle-threaded=true -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" -Dstatic-llvm=true -Duse-llvm=true -Dvalue-interpret-mode=direct -Ddev=full -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib" --search-prefix "$PWD/.zig/zig"
     - name: achive
       run: |
         mkdir tmp

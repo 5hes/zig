@@ -14,7 +14,7 @@ jobs:
     - uses: actions/checkout@v4.2.2
     - name: Create a new tag
       run: |
-        TAG_NAME="master"
+        TAG_NAME="nightly"
         git tag $TAG_NAME
         git push origin $TAG_NAME
   get_Help:
@@ -51,16 +51,16 @@ jobs:
         mkdir tmp
         cp -rp zig-out/ tmp/
         cd tmp
-        mv zig-out master
-        tar -cf x1c_fast.tar master
-        tar -cJf x1c_fast.tar.xz master
-        7z a x1c_fast.7z master
-        rm -rf master
+        mv zig-out nightly
+        tar -cf x1c_fast.tar nightly
+        tar -cJf x1c_fast.tar.xz nightly
+        7z a x1c_fast.7z nightly
+        rm -rf nightly
         mv * ..
     - name: GH Release
       uses: softprops/action-gh-release@v2.2.1
       with:
-        tag_name: master
+        tag_name: nightly
         make_latest: true
         files: |
           x1c_fast.7z
@@ -94,16 +94,16 @@ jobs:
         mkdir tmp
         cp -rp zig-out/ tmp/
         cd tmp
-        mv zig-out master
-        tar -cf x1c_small.tar master
-        tar -cJf x1c_small.tar.xz master
-        7z a x1c_small.7z master
-        rm -rf master
+        mv zig-out nightly
+        tar -cf x1c_small.tar nightly
+        tar -cJf x1c_small.tar.xz nightly
+        7z a x1c_small.7z nightly
+        rm -rf nightly
         mv * ..
     - name: GH Release
       uses: softprops/action-gh-release@v2.2.1
       with:
-        tag_name: master
+        tag_name: nightly
         make_latest: true
         files: |
           x1c_small.7z
@@ -137,16 +137,16 @@ jobs:
         mkdir tmp
         cp -rp zig-out/ tmp/
         cd tmp
-        mv zig-out master
-        tar -cf kryo_fast.tar master
-        tar -cJf kryo_fast.tar.xz master
-        7z a kryo_fast.7z master
-        rm -rf master
+        mv zig-out nightly
+        tar -cf kryo_fast.tar nightly
+        tar -cJf kryo_fast.tar.xz nightly
+        7z a kryo_fast.7z nightly
+        rm -rf nightly
         mv * ..
     - name: GH Release
       uses: softprops/action-gh-release@v2.2.1
       with:
-        tag_name: master
+        tag_name: nightly
         make_latest: true
         files: |
           kryo_fast.7z
@@ -180,16 +180,16 @@ jobs:
         mkdir tmp
         cp -rp zig-out/ tmp/
         cd tmp
-        mv zig-out master
-        tar -cf kryo_small.tar master
-        tar -cJf kryo_small.tar.xz master
-        7z a kryo_small.7z master
-        rm -rf master
+        mv zig-out nightly
+        tar -cf kryo_small.tar nightly
+        tar -cJf kryo_small.tar.xz nightly
+        7z a kryo_small.7z nightly
+        rm -rf nightly
         mv * ..
     - name: GH Release
       uses: softprops/action-gh-release@v2.2.1
       with:
-        tag_name: master
+        tag_name: nightly
         make_latest: true
         files: |
           kryo_small.7z
@@ -223,16 +223,16 @@ jobs:
         mkdir tmp
         cp -rp zig-out/ tmp/
         cd tmp
-        mv zig-out master
-        tar -cf baseline_fast.tar master
-        tar -cJf baseline_fast.tar.xz master
-        7z a baseline_fast.7z master
-        rm -rf master
+        mv zig-out nightly
+        tar -cf baseline_fast.tar nightly
+        tar -cJf baseline_fast.tar.xz nightly
+        7z a baseline_fast.7z nightly
+        rm -rf nightly
         mv * ..
     - name: GH Release
       uses: softprops/action-gh-release@v2.2.1
       with:
-        tag_name: master
+        tag_name: nightly
         make_latest: true
         files: |
           baseline_fast.7z
@@ -266,16 +266,16 @@ jobs:
         mkdir tmp
         cp -rp zig-out/ tmp/
         cd tmp
-        mv zig-out master
-        tar -cf baseline_small.tar master
-        tar -cJf baseline_small.tar.xz master
-        7z a baseline_small.7z master
-        rm -rf master
+        mv zig-out nightly
+        tar -cf baseline_small.tar nightly
+        tar -cJf baseline_small.tar.xz nightly
+        7z a baseline_small.7z nightly
+        rm -rf nightly
         mv * ..
     - name: GH Release
       uses: softprops/action-gh-release@v2.2.1
       with:
-        tag_name: master
+        tag_name: nightly
         make_latest: true
         files: |
           baseline_small.7z
@@ -313,16 +313,16 @@ jobs:
         mkdir tmp
         cp -rp zig-out/ tmp/
         cd tmp
-        mv zig-out master
-        tar -cf x1c_fast_signle.tar master
-        tar -cJf x1c_fast_signle.tar.xz master
-        7z a x1c_fast_signle.7z master
-        rm -rf master
+        mv zig-out nightly
+        tar -cf x1c_fast_signle.tar nightly
+        tar -cJf x1c_fast_signle.tar.xz nightly
+        7z a x1c_fast_signle.7z nightly
+        rm -rf nightly
         mv * ..
     - name: GH Release
       uses: softprops/action-gh-release@v2.2.1
       with:
-        tag_name: master
+        tag_name: nightly
         make_latest: true
         files: |
           x1c_fast_signle.7z
@@ -356,16 +356,16 @@ jobs:
         mkdir tmp
         cp -rp zig-out/ tmp/
         cd tmp
-        mv zig-out master
-        tar -cf x1c_small_signle.tar master
-        tar -cJf x1c_small_signle.tar.xz master
-        7z a x1c_small_signle.7z master
-        rm -rf master
+        mv zig-out nightly
+        tar -cf x1c_small_signle.tar nightly
+        tar -cJf x1c_small_signle.tar.xz nightly
+        7z a x1c_small_signle.7z nightly
+        rm -rf nightly
         mv * ..
     - name: GH Release
       uses: softprops/action-gh-release@v2.2.1
       with:
-        tag_name: master
+        tag_name: nightly
         make_latest: true
         files: |
           x1c_small_signle.7z
@@ -399,16 +399,16 @@ jobs:
         mkdir tmp
         cp -rp zig-out/ tmp/
         cd tmp
-        mv zig-out master
-        tar -cf kryo_fast_signle.tar master
-        tar -cJf kryo_fast_signle.tar.xz master
-        7z a kryo_fast_signle.7z master
-        rm -rf master
+        mv zig-out nightly
+        tar -cf kryo_fast_signle.tar nightly
+        tar -cJf kryo_fast_signle.tar.xz nightly
+        7z a kryo_fast_signle.7z nightly
+        rm -rf nightly
         mv * ..
     - name: GH Release
       uses: softprops/action-gh-release@v2.2.1
       with:
-        tag_name: master
+        tag_name: nightly
         make_latest: true
         files: |
           kryo_fast_signle.7z
@@ -442,16 +442,16 @@ jobs:
         mkdir tmp
         cp -rp zig-out/ tmp/
         cd tmp
-        mv zig-out master
-        tar -cf kryo_small_signle.tar master
-        tar -cJf kryo_small_signle.tar.xz master
-        7z a kryo_small_signle.7z master
-        rm -rf master
+        mv zig-out nightly
+        tar -cf kryo_small_signle.tar nightly
+        tar -cJf kryo_small_signle.tar.xz nightly
+        7z a kryo_small_signle.7z nightly
+        rm -rf nightly
         mv * ..
     - name: GH Release
       uses: softprops/action-gh-release@v2.2.1
       with:
-        tag_name: master
+        tag_name: nightly
         make_latest: true
         files: |
           kryo_small_signle.7z
@@ -485,16 +485,16 @@ jobs:
         mkdir tmp
         cp -rp zig-out/ tmp/
         cd tmp
-        mv zig-out master
-        tar -cf baseline_fast_signle.tar master
-        tar -cJf baseline_fast_signle.tar.xz master
-        7z a baseline_fast_signle.7z master
-        rm -rf master
+        mv zig-out nightly
+        tar -cf baseline_fast_signle.tar nightly
+        tar -cJf baseline_fast_signle.tar.xz nightly
+        7z a baseline_fast_signle.7z nightly
+        rm -rf nightly
         mv * ..
     - name: GH Release
       uses: softprops/action-gh-release@v2.2.1
       with:
-        tag_name: master
+        tag_name: nightly
         make_latest: true
         files: |
           baseline_fast_signle.7z
@@ -528,16 +528,16 @@ jobs:
         mkdir tmp
         cp -rp zig-out/ tmp/
         cd tmp
-        mv zig-out master
-        tar -cf baseline_small_signle.tar master
-        tar -cJf baseline_small_signle.tar.xz master
-        7z a baseline_small_signle.7z master
-        rm -rf master
+        mv zig-out nightly
+        tar -cf baseline_small_signle.tar nightly
+        tar -cJf baseline_small_signle.tar.xz nightly
+        7z a baseline_small_signle.7z nightly
+        rm -rf nightly
         mv * ..
     - name: GH Release
       uses: softprops/action-gh-release@v2.2.1
       with:
-        tag_name: master
+        tag_name: nightly
         make_latest: true
         files: |
           baseline_small_signle.7z

@@ -13,10 +13,7 @@ pub fn build(b: *std.Build) void {
 
     const t = b.addTest(.{
         .root_module = test_mod,
-        .test_runner = .{
-            .path = b.path("test_runner/main.zig"),
-            .mode = .simple,
-        },
+        .test_runner = b.path("test_runner/main.zig"),
     });
 
     const test_step = b.step("test", "Run unit tests");

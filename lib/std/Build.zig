@@ -979,7 +979,7 @@ pub const TestOptions = struct {
     /// Deprecated; use `.filters = &.{filter}` instead of `.filter = filter`.
     filter: ?[]const u8 = null,
     filters: []const []const u8 = &.{},
-    test_runner: ?Step.Compile.TestRunner = null,
+    test_runner: ?LazyPath = null,
     use_llvm: ?bool = null,
     use_lld: ?bool = null,
     zig_lib_dir: ?LazyPath = null,
@@ -1136,8 +1136,9 @@ pub fn addRunArtifact(b: *Build, exe: *Step.Compile) *Step.Run {
             run_step.addArtifactArg(exe);
         }
 
-        const test_server_mode = if (exe.test_runner) |r| r.mode == .server else true;
-        if (test_server_mode) run_step.enableTestRunnerMode();
+        if (exe.test_server_mode) {
+            run_step.enableTestRunnerMode();
+        }
     } else {
         run_step.addArtifactArg(exe);
     }

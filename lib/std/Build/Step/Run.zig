@@ -1354,9 +1354,6 @@ fn spawnChildAndCollect(
             _ = child.kill() catch {};
         }
 
-        // We need to report `error.InvalidExe` *now* if applicable.
-        try child.waitForSpawn();
-
         var timer = try std.time.Timer.start();
 
         const result = if (run.stdio == .zig_test)

@@ -23,11 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-    - name: Setup llvm
-      run: |
-        curl -o llvm.sh https://apt.llvm.org/llvm.sh
-        sudo chmod 777 llvm.sh
-        sudo ./llvm.sh 19 all
+
     - name: Help
       run: |
         mkdir .zig && cd .zig
@@ -40,11 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-    - name: Setup llvm
-      run: |
-        curl -o llvm.sh https://apt.llvm.org/llvm.sh
-        sudo chmod 777 llvm.sh
-        sudo ./llvm.sh 19 all
+
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -52,7 +44,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib" 
+        zig build -Doptimize=ReleaseFast -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib" -Dstatic-llvm=true -Duse-llvm=true -Denable-llvm=true -Dvalue-interpret-mode=derect -Ddev=full -fno-reference-trace 
     - name: achive
       run: |
         mkdir tmp
@@ -87,11 +79,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-    - name: Setup llvm
-      run: |
-        curl -o llvm.sh https://apt.llvm.org/llvm.sh
-        sudo chmod 777 llvm.sh
-        sudo ./llvm.sh 19 all
+
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -99,7 +87,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Doptimize=ReleaseSmall -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib" -Dstatic-llvm=true -Duse-llvm=true -Denable-llvm=true -Dvalue-interpret-mode=derect -Ddev=full -fno-reference-trace
     - name: achive
       run: |
         mkdir tmp
@@ -134,11 +122,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-    - name: Setup llvm
-      run: |
-        curl -o llvm.sh https://apt.llvm.org/llvm.sh
-        sudo chmod 777 llvm.sh
-        sudo ./llvm.sh 19 all
+
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -146,7 +130,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Doptimize=ReleaseFast -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib" -Dstatic-llvm=true -Duse-llvm=true -Denable-llvm=true -Dvalue-interpret-mode=derect -Ddev=full -fno-reference-trace
     - name: achive
       run: |
         mkdir tmp
@@ -181,11 +165,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-    - name: Setup llvm
-      run: |
-        curl -o llvm.sh https://apt.llvm.org/llvm.sh
-        sudo chmod 777 llvm.sh
-        sudo ./llvm.sh 19 all
+
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -193,7 +173,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Doptimize=ReleaseSmall -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib" -Dstatic-llvm=true -Duse-llvm=true -Denable-llvm=true -Dvalue-interpret-mode=derect -Ddev=full -fno-reference-trace
     - name: achive
       run: |
         mkdir tmp
@@ -228,11 +208,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-    - name: Setup llvm
-      run: |
-        curl -o llvm.sh https://apt.llvm.org/llvm.sh
-        sudo chmod 777 llvm.sh
-        sudo ./llvm.sh 19 all
+
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -240,7 +216,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Doptimize=ReleaseFast -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib" -Dstatic-llvm=true -Duse-llvm=true -Denable-llvm=true -Dvalue-interpret-mode=derect -Ddev=full -fno-reference-trace
     - name: achive
       run: |
         mkdir tmp
@@ -275,11 +251,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-    - name: Setup llvm
-      run: |
-        curl -o llvm.sh https://apt.llvm.org/llvm.sh
-        sudo chmod 777 llvm.sh
-        sudo ./llvm.sh 19 all
+
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -287,7 +259,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Doptimize=ReleaseSmall -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib" -Dstatic-llvm=true -Duse-llvm=true -Denable-llvm=true -Dvalue-interpret-mode=derect -Ddev=full -fno-reference-trace
     - name: achive
       run: |
         mkdir tmp
@@ -326,11 +298,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-    - name: Setup llvm
-      run: |
-        curl -o llvm.sh https://apt.llvm.org/llvm.sh
-        sudo chmod 777 llvm.sh
-        sudo ./llvm.sh 19 all
+
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -338,7 +306,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dsignle-threaded=true -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Doptimize=ReleaseFast -Dsingle-threaded=true -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib" -Dstatic-llvm=true -Duse-llvm=true -Denable-llvm=true -Dvalue-interpret-mode=derect -Ddev=full -fno-reference-trace
     - name: achive
       run: |
         mkdir tmp
@@ -373,11 +341,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-    - name: Setup llvm
-      run: |
-        curl -o llvm.sh https://apt.llvm.org/llvm.sh
-        sudo chmod 777 llvm.sh
-        sudo ./llvm.sh 19 all
+
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -385,7 +349,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dsignle-threaded=true -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Doptimize=ReleaseSmall -Dsingle-threaded=true -Dcpu="cortex_x1c" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib" -Dstatic-llvm=true -Duse-llvm=true -Denable-llvm=true -Dvalue-interpret-mode=derect -Ddev=full -fno-reference-trace
     - name: achive
       run: |
         mkdir tmp
@@ -420,11 +384,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-    - name: Setup llvm
-      run: |
-        curl -o llvm.sh https://apt.llvm.org/llvm.sh
-        sudo chmod 777 llvm.sh
-        sudo ./llvm.sh 19 all
+
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -432,7 +392,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dsignle-threaded=true -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Doptimize=ReleaseFast -Dsingle-threaded=true -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib" -Dstatic-llvm=true -Duse-llvm=true -Denable-llvm=true -Dvalue-interpret-mode=derect -Ddev=full -fno-reference-trace
     - name: achive
       run: |
         mkdir tmp
@@ -467,11 +427,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-    - name: Setup llvm
-      run: |
-        curl -o llvm.sh https://apt.llvm.org/llvm.sh
-        sudo chmod 777 llvm.sh
-        sudo ./llvm.sh 19 all
+
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -479,7 +435,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dsignle-threaded=true -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Doptimize=ReleaseSmall -Dsingle-threaded=true -Dcpu="kryo" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib" -Dstatic-llvm=true -Duse-llvm=true -Denable-llvm=true -Dvalue-interpret-mode=derect -Ddev=full -fno-reference-trace
     - name: achive
       run: |
         mkdir tmp
@@ -514,11 +470,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-    - name: Setup llvm
-      run: |
-        curl -o llvm.sh https://apt.llvm.org/llvm.sh
-        sudo chmod 777 llvm.sh
-        sudo ./llvm.sh 19 all
+
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -526,7 +478,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dsignle-threaded=true -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Doptimize=ReleaseFast -Dsingle-threaded=true -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib" -Dstatic-llvm=true -Duse-llvm=true -Denable-llvm=true -Dvalue-interpret-mode=derect -Ddev=full -fno-reference-trace
     - name: achive
       run: |
         mkdir tmp
@@ -561,11 +513,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
-    - name: Setup llvm
-      run: |
-        curl -o llvm.sh https://apt.llvm.org/llvm.sh
-        sudo chmod 777 llvm.sh
-        sudo ./llvm.sh 19 all
+
     - name: Build
       run: |
         mkdir .zig && cd .zig
@@ -573,7 +521,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Doptimize=ReleaseSmall -Dsignle-threaded=true -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Doptimize=ReleaseSmall -Dsingle-threaded=true -Dcpu="baseline" -Dstrip=true -Dtarget="aarch64-linux-musl" --zig-lib-dir "$PWD/.zig/zig/lib" -Dstatic-llvm=true -Duse-llvm=true -Denable-llvm=true -Dvalue-interpret-mode=derect -Ddev=full -fno-reference-trace
     - name: achive
       run: |
         mkdir tmp

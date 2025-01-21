@@ -699,16 +699,16 @@ jobs:
     runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v4.2.2
-    - name: Setup llvm
-      run: |
-        curl -o llvm.sh https://apt.llvm.org/llvm.sh
-        sudo chmod 777 llvm.sh
-        sudo ./llvm.sh 19 all
-    - name: Build
-      run: |
-        mkdir .zig && cd .zig
-        curl -o zig.tar.xz $LINK
-        tar -xf zig.tar.xz && rm zig.tar.xz
-        mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
-        cd ../..
-        zig build
+      - name: Setup llvm
+        run: |
+          curl -o llvm.sh https://apt.llvm.org/llvm.sh
+          sudo chmod 777 llvm.sh
+          sudo ./llvm.sh 19 all
+      - name: Build
+        run: |
+          mkdir .zig && cd .zig
+          curl -o zig.tar.xz $LINK
+          tar -xf zig.tar.xz && rm zig.tar.xz
+          mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
+          cd ../..
+          zig build

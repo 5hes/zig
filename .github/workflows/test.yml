@@ -19,7 +19,7 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -oL zig.7z "https://github.com/5hes/zig/releases/download/nightly/x64_fast.7z"
+        curl -L -o zig.7z "https://github.com/5hes/zig/releases/download/nightly/x64_fast.7z"
         ls -lh zig.7z
         7z x zig.7z && rm zig.7z
         mv * zig && cd zig && mv bin/zig . && export PATH=$PATH:$PWD
@@ -57,7 +57,7 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -oL zig.7z "https://github.com/5hes/zig/releases/download/nightly/x64_fast.7z"
+        curl -L -o zig.7z "https://github.com/5hes/zig/releases/download/nightly/x64_fast.7z"
         ls -lh zig.7z
         7z x zig.7z && rm zig.7z
         mv * zig && cd zig && mv bin/zig . && export PATH=$PATH:$PWD
@@ -95,7 +95,7 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -oL zig.7z "https://github.com/5hes/zig/releases/download/nightly/x64_fast.7z"
+        curl -L -o zig.7z "https://github.com/5hes/zig/releases/download/nightly/x64_fast.7z"
         ls -lh zig.7z
         7z x zig.7z && rm zig.7z
         mv * zig && cd zig && mv bin/zig . && export PATH=$PATH:$PWD

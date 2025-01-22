@@ -21,6 +21,6 @@ jobs:
           git checkout 71018b5c18711b2f3d6f37f1dde06f205d56c64e
           git checkout -b backup
           
-          git add .
+          git add -A
           git commit -m "Backup to commit 71018b5c18711b2f3d6f37f1dde06f205d56c64e"
           git push origin backup

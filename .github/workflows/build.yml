@@ -31,7 +31,7 @@ jobs:
         tar -cJf kryo_fast.tar.xz nightly
         tar -cf kryo_fast.tar nightly
     - name: Release
-      uses: spftprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v2
       with:
         tag_name: nightly
         make_latest: true
@@ -68,7 +68,7 @@ jobs:
         tar -cJf kryo_small.tar.xz nightly
         tar -cf kryo_small.tar nightly
     - name: Release
-      uses: spftprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v2
       with:
         tag_name: nightly
         make_latest: true
@@ -105,7 +105,7 @@ jobs:
         tar -cJf x64_Fast.tar.xz nightly
         tar -cf x64_Fast.tar nightly
     - name: Release
-      uses: spftprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v2
       with:
         tag_name: nightly
         make_latest: true

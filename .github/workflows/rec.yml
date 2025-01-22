@@ -2,6 +2,7 @@ name: Revert Merge
 
 on:
   workflow_dispatch:
+  push:
   
 permissions: write-all
 jobs:
@@ -17,5 +18,5 @@ jobs:
         run: |
           git config --local user.name "actions"
           git config --local user.email "actions@github.com"
-          git revert -m 1 160445ef316f76dfddfa17b11c4919a3e14f486d
+          git revert -m 1 e4d570695777af643e375343a904a024250de98d
           git push origin master2

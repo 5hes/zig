@@ -15,7 +15,7 @@ jobs:
       run: |
         git config --local user.name "actions"
         git config --local user.email "actions@github.com"
-        git revert --no-commit e4d570695777af643e375343a904a024250de98d..0595feb34128db22fbebea843af929de3ede8190
+        git revert -m --no-commit e4d570695777af643e375343a904a024250de98d..0595feb34128db22fbebea843af929de3ede8190
     - name: Setup llvm
       run: |
         curl -o llvm.sh https://apt.llvm.org/llvm.sh

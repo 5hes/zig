@@ -22,7 +22,11 @@ const SemaError = Zcu.SemaError;
 ip_index: InternPool.Index,
 
 pub fn zigTypeTag(ty: Type, zcu: *const Zcu) std.builtin.TypeId {
-    return zcu.intern_pool.zigTypeTag(ty.toIntern());
+    return ty.zigTypeTagOrPoison(zcu) catch unreachable;
+}
+
+pub fn zigTypeTagOrPoison(ty: Type, zcu: *const Zcu) error{GenericPoison}!std.builtin.TypeId {
+    return zcu.intern_pool.zigTypeTagOrPoison(ty.toIntern());
 }
 
 pub fn baseZigTypeTag(self: Type, mod: *Zcu) std.builtin.TypeId {
@@ -2499,16 +2503,14 @@ pub fn fnCallingConvention(ty: Type, zcu: *const Zcu) std.builtin.CallingConvent
 }
 
 pub fn isValidParamType(self: Type, zcu: *const Zcu) bool {
-    if (self.toIntern() == .generic_poison_type) return true;
-    return switch (self.zigTypeTag(zcu)) {
+    return switch (self.zigTypeTagOrPoison(zcu) catch return true) {
         .@"opaque", .noreturn => false,
         else => true,
     };
 }
 
 pub fn isValidReturnType(self: Type, zcu: *const Zcu) bool {
-    if (self.toIntern() == .generic_poison_type) return true;
-    return switch (self.zigTypeTag(zcu)) {
+    return switch (self.zigTypeTagOrPoison(zcu) catch return true) {
         .@"opaque" => false,
         else => true,
     };
@@ -3782,6 +3784,7 @@ pub fn resolveFields(ty: Type, pt: Zcu.PerThread) SemaError!void {
         .bool_true => unreachable,
         .bool_false => unreachable,
         .empty_tuple => unreachable,
+        .generic_poison => unreachable,
 
         else => switch (ty_ip.unwrap(ip).getTag(ip)) {
             .type_struct,

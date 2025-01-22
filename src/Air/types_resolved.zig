@@ -455,8 +455,9 @@ pub fn checkVal(val: Value, zcu: *Zcu) bool {
 
 pub fn checkType(ty: Type, zcu: *Zcu) bool {
     const ip = &zcu.intern_pool;
-    if (ty.isGenericPoison()) return true;
-    return switch (ty.zigTypeTag(zcu)) {
+    return switch (ty.zigTypeTagOrPoison(zcu) catch |err| switch (err) {
+        error.GenericPoison => return true,
+    }) {
         .type,
         .void,
         .bool,

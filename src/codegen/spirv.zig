@@ -941,6 +941,7 @@ const NavGen = struct {
                     .null,
                     .empty_tuple,
                     .@"unreachable",
+                    .generic_poison,
                     => unreachable, // non-runtime values
 
                     .false, .true => break :cache try self.constBool(val.toBool(), repr),

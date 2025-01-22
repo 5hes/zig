@@ -1451,6 +1451,7 @@ pub const Pool = struct {
             .bool_true,
             .bool_false,
             .empty_tuple,
+            .generic_poison,
             .none,
             => unreachable,
 

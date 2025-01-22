@@ -229,6 +229,7 @@ pub fn generateSymbol(
             .void => unreachable, // non-runtime value
             .null => unreachable, // non-runtime value
             .@"unreachable" => unreachable, // non-runtime value
+            .generic_poison => unreachable, // non-runtime value
             .empty_tuple => return,
             .false, .true => try code.append(gpa, switch (simple_value) {
                 .false => 0,

@@ -23,7 +23,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Dtarget="aarch64-linux-musl" -Dcpu="kryo" -Doptimize=ReleaseFast -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Ddev=core -Dtarget="aarch64-linux-musl" -Dcpu="kryo" -Doptimize=ReleaseFast -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib"
     - name: Pack output
       run: |
         mv zig-out nightly
@@ -60,7 +60,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Dtarget="aarch64-linux-musl" -Dcpu="kryo" -Doptimize=ReleaseSmall -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Ddev=core -Dtarget="aarch64-linux-musl" -Dcpu="kryo" -Doptimize=ReleaseSmall -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib"
     - name: Pack output
       run: |
         mv zig-out nightly
@@ -97,13 +97,13 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Doptimize=ReleaseFast -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Ddev=core -Doptimize=ReleaseFast -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib"
     - name: Pack output
       run: |
         mv zig-out nightly
-        7z a x64_Fast.7z nightly
-        tar -cJf x64_Fast.tar.xz nightly
-        tar -cf x64_Fast.tar nightly
+        7z a x64_fast.7z nightly
+        tar -cJf x64_fast.tar.xz nightly
+        tar -cf x64_fast.tar nightly
     - name: Release
       uses: softprops/action-gh-release@v2
       with:

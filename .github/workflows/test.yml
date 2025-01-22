@@ -1,4 +1,4 @@
-name: build
+name: TEST
 on:
   push:
 concurrency:
@@ -19,8 +19,8 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://github.com/5hes/zig/releases/download/nightly/x64_fast.tar.xz"
-        tar -xf zig.tar.xz && rm zig.tar.xz
+        curl -o zig.7z "https://github.com/5hes/zig/releases/download/nightly/x64_fast.7z"
+        tar -xf zig.7z && rm zig.7z
         mv * zig && cd zig && mv bin/zig . && export PATH=$PATH:$PWD
         cd ../..
         zig build -Dtarget="aarch64-linux-musl" -Dcpu="kryo" -Doptimize=ReleaseFast -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib"
@@ -56,8 +56,8 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://github.com/5hes/zig/releases/download/nightly/x64_fast.tar.xz"
-        tar -xf zig.tar.xz && rm zig.tar.xz
+        curl -o zig.7z "https://github.com/5hes/zig/releases/download/nightly/x64_fast.7z"
+        7z x zig.7z && rm zig.7z
         mv * zig && cd zig && mv bin/zig . && export PATH=$PATH:$PWD
         cd ../..
         zig build -Dtarget="aarch64-linux-musl" -Dcpu="kryo" -Doptimize=ReleaseSmall -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib"
@@ -93,8 +93,8 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://github.com/5hes/zig/releases/download/nightly/x64_fast.tar.xz"
-        tar -xf zig.tar.xz && rm zig.tar.xz
+        curl -o zig.7z "https://github.com/5hes/zig/releases/download/nightly/x64_fast.7z"
+        tar -xf zig.7z && rm zig.7z
         mv * zig && cd zig && mv bin/zig . && export PATH=$PATH:$PWD
         cd ../..
         zig build -Doptimize=ReleaseFast -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib"

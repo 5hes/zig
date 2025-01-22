@@ -1,0 +1,26 @@
+name: Backup to Specific Commit
+
+on:
+  push:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore to specific commit
+        run: |
+          git config --global user.name "actions"
+          git config --global user.email "actions@example.com"
+
+          git checkout 71018b5c18711b2f3d6f37f1dde06f205d56c64e
+          git checkout -b backup
+          
+          git add .
+          git commit -m "Backup to commit 71018b5c18711b2f3d6f37f1dde06f205d56c64e"
+          git push origin backup

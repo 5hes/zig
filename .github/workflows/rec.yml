@@ -17,5 +17,5 @@ jobs:
         run: |
           git config --local user.name "actions"
           git config --local user.email "actions@github.com"
-          git revert -m 1 0d6b17b6a5cd4d179417f8a13302558b05f1f2ca
+          git revert -m 1 160445ef316f76dfddfa17b11c4919a3e14f486d
           git push origin master2

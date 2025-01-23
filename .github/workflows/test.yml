@@ -7,6 +7,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  help:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build
+      run: |
+        mkdir .zig && cd .zig
+        curl -L -o zig.7z "https://github.com/5hes/zig/releases/download/nightly/x64_fast.7z"
+        ls -lh zig.7z
+        7z x zig.7z && rm zig.7z
+        mv * zig && cd zig && export PATH=$PATH:$PWD
+        cd ../..
+        zig zen
+        echo -e "\n\n\n\n\n"
+        zig --help
+        echo -e "\n\n\n\n\n"
+        zig build --help
   kroy_Fast:
     runs-on: ubuntu-latest
     steps:

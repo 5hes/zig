@@ -7,7 +7,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  kroy_Fast:
+  kryo_Fast:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -60,7 +60,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Dstatic-llvm=true -Dno-lib=true -Dno-langref=true -Ddev=full -Duse-zig-libcxx=true -Dtarget="aarch64-linux-musl" -Dcpu="kryo" -Doptimize=ReleaseSmall -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace -Ddebug-extensions=false -Dflat=true --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Duse-llvm=true -Dno-lib=true -Dno-langref=true -Ddev=full -Duse-zig-libcxx=true -Dtarget="aarch64-linux-musl" -Dcpu="kryo" -Doptimize=ReleaseSmall -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace -Ddebug-extensions=false -Dflat=true --zig-lib-dir "$PWD/.zig/zig/lib"
     - name: Pack output
       run: |
         mv zig-out nightly
@@ -97,7 +97,7 @@ jobs:
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Denable-llvm=true -Dno-lib=true -Dno-langref=true -Ddev=full -Duse-zig-libcxx=true -Doptimize=ReleaseFast -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace -Ddebug-extensions=false -Dflat=true --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Duse-llvm=true -Dstatic-llvm=false -Dno-lib=true -Dno-langref=true -Ddev=full -Duse-zig-libcxx=true -Doptimize=ReleaseFast -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace -Ddebug-extensions=false -Dflat=true --zig-lib-dir "$PWD/.zig/zig/lib"
     - name: Pack output
       run: |
         mv zig-out nightly

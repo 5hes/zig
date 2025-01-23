@@ -19,11 +19,13 @@ jobs:
         7z x zig.7z && rm zig.7z
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig zen
-        echo -e "\n\n\n\n\n"
         zig --help
         echo -e "\n\n\n\n\n"
+        zig help
+        echo -e "\n\n\n\n\n"
         zig build --help
+        echo -e "\n\n\n\n\n"
+        zig zen
   kroy_Fast:
     runs-on: ubuntu-latest
     steps:

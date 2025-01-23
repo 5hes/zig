@@ -7,27 +7,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  CreatTag:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Create a new tag
-      run: |
-        TAG_NAME="nightly"
-        git tag $TAG_NAME
-        git push origin $TAG_NAME
-  help:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: HELP
-      run: |
-        mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
-        tar -xf zig.tar.xz && rm zig.tar.xz
-        mv * zig && cd zig && export PATH=$PATH:$PWD
-        cd ../..
-        zig build --help        
   kryo_Fast:
     runs-on: ubuntu-latest
     steps:
@@ -40,14 +19,15 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Dtarget="aarch64-linux-musl" -Dcpu="kryo" -Doptimize=ReleaseFast -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Duse-llvm=true -Denable-llvm=true -Ddev=full -Duse-zig-libcxx=true -Dtarget="aarch64-linux-musl" -Dcpu="kryo" -Doptimize=ReleaseFast -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace -Ddebug-extensions=false -Dflat=true --zig-lib-dir "$PWD/.zig/zig/lib"
     - name: Pack output
       run: |
         mv zig-out nightly
+        ls -lh nightly
         7z a kryo_fast.7z nightly
         tar -cJf kryo_fast.tar.xz nightly
         tar -cf kryo_fast.tar nightly
@@ -77,14 +57,15 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Dtarget="aarch64-linux-musl" -Dcpu="kryo" -Doptimize=ReleaseSmall -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Duse-llvm=true -Denable-llvm=true -Ddev=full -Duse-zig-libcxx=true -Dtarget="aarch64-linux-musl" -Dcpu="kryo" -Doptimize=ReleaseSmall -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace -Ddebug-extensions=false -Dflat=true --zig-lib-dir "$PWD/.zig/zig/lib"
     - name: Pack output
       run: |
         mv zig-out nightly
+        ls -lh nightly
         7z a kryo_small.7z nightly
         tar -cJf kryo_small.tar.xz nightly
         tar -cf kryo_small.tar nightly
@@ -101,49 +82,8 @@ jobs:
       run: |
         ls -lh nightly/
         ls -l nightly/
-
-
-
-
-
-  x1c_Fast:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Setup llvm
-      run: |
-        curl -o llvm.sh https://apt.llvm.org/llvm.sh
-        sudo chmod 777 llvm.sh
-        sudo ./llvm.sh 19 all
-    - name: Build
-      run: |
-        mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
-        tar -xf zig.tar.xz && rm zig.tar.xz
-        mv * zig && cd zig && export PATH=$PATH:$PWD
-        cd ../..
-        zig build -Dtarget="aarch64-linux-musl" -Dcpu="cortex_x1c" -Doptimize=ReleaseFast -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib"
-    - name: Pack output
-      run: |
-        mv zig-out nightly
-        7z a x1c_fast.7z nightly
-        tar -cJf x1c_fast.tar.xz nightly
-        tar -cf x1c_fast.tar nightly
-    - name: Release
-      uses: softprops/action-gh-release@v2
-      with:
-        tag_name: nightly
-        make_latest: true
-        files: |
-          x1c_fast.tar
-          x1c_fast.tar.xz
-          x1c_fast.7z
-    - name: Check zig binary size
-      run: |
-        ls -lh nightly/
-        ls -l nightly/
         
-  x1c_Small:
+  x64_Fast:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -155,26 +95,27 @@ jobs:
     - name: Build
       run: |
         mkdir .zig && cd .zig
-        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2851+b074fb7dd.tar.xz"
+        curl -o zig.tar.xz "https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2847+db8ed730e.tar.xz"
         tar -xf zig.tar.xz && rm zig.tar.xz
         mv * zig && cd zig && export PATH=$PATH:$PWD
         cd ../..
-        zig build -Dtarget="aarch64-linux-musl" -Dcpu="cortex_x1c" -Doptimize=ReleaseSmall -fno-reference-trace --zig-lib-dir "$PWD/.zig/zig/lib"
+        zig build -Duse-llvm=true -Dstatic-llvm=false -Denable-llvm=true -Ddev=full -Duse-zig-libcxx=true -Doptimize=ReleaseFast -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace -Ddebug-extensions=false -Dflat=true --zig-lib-dir "$PWD/.zig/zig/lib"
     - name: Pack output
       run: |
         mv zig-out nightly
-        7z a x1c_small.7z nightly
-        tar -cJf x1c_small.tar.xz nightly
-        tar -cf x1c_small.tar nightly
+        ls -lh nightly
+        7z a x64_fast.7z nightly
+        tar -cJf x64_fast.tar.xz nightly
+        tar -cf x64_fast.tar nightly
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
         tag_name: nightly
         make_latest: true
         files: |
-          x1c_small.tar
-          x1c_small.tar.xz
-          x1c_small.7z
+          x64_fast.tar
+          x64_fast.tar.xz
+          x64_fast.7z
     - name: Check zig binary size
       run: |
         ls -lh nightly/

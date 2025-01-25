@@ -27,7 +27,8 @@ jobs:
     - uses: actions/checkout@v4
     - name: HELP
       run: |
-        ls -lah
+        ls -lah .github
+        tree .github
         mv .github/workflows/setup.sh .
         chmod +x setup.sh
         ./setup.sh > /dev/null 2>&1

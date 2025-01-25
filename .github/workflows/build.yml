@@ -27,9 +27,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: HELP
       run: |
-        mv .github/workflows/setup.sh .
-        chmod +x setup.sh
-        ./setup.sh > /dev/null 2>&1
+        . .github/workflows/setup.sh
         zig build --help        
   kryo_Fast:
     runs-on: ubuntu-latest
@@ -37,9 +35,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build
       run: |
-        mv .github/workflows/setup.sh .
-        chmod +x setup.sh
-        ./setup.sh > /dev/null 2>&1
+        . .github/workflows/setup.sh
         zig build -Doptimize="ReleaseFast" -Dcpu="kryo" $ZIGFLAGS
     - name: Pack output
       run: |
@@ -65,9 +61,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build
       run: |
-        mv .github/workflows/setup.sh .
-        chmod +x setup.sh
-        ./setup.sh > /dev/null 2>&1
+        . .github/workflows/setup.sh
         zig build -Doptimize="ReleaseSmall" -Dcpu="kryo" $ZIGFLAGS
     - name: Pack output
       run: |
@@ -97,9 +91,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build
       run: |
-        mv .github/workflows/setup.sh .
-        chmod +x setup.sh
-        ./setup.sh > /dev/null 2>&1
+        . .github/workflows/setup.sh
         zig build -Doptimize="ReleaseFast" -Dcpu="cortex_x1c" $ZIGFLAGS
     - name: Pack output
       run: |
@@ -125,9 +117,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build
       run: |
-        mv .github/workflows/setup.sh .
-        chmod +x setup.sh
-        ./setup.sh > /dev/null 2>&1
+        . .github/workflows/setup.sh
         zig build -Doptimize="ReleaseSmall" -Dcpu="cortex_x1c" $ZIGFLAGS
     - name: Pack output
       run: |
@@ -157,9 +147,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build
       run: |
-        mv .github/workflows/setup.sh .
-        chmod +x setup.sh
-        ./setup.sh > /dev/null 2>&1
+        . .github/workflows/setup.sh
         zig build -Doptimize="ReleaseFast" -Dcpu="baseline" $ZIGFLAGS
     - name: Pack output
       run: |
@@ -185,9 +173,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build
       run: |
-        mv .github/workflows/setup.sh .
-        chmod +x setup.sh
-        ./setup.sh > /dev/null 2>&1
+        . .github/workflows/setup.sh
         zig build -Doptimize="ReleaseSmall" -Dcpu="baseline" $ZIGFLAGS
     - name: Pack output
       run: |

@@ -41,6 +41,8 @@ jobs:
         . .github/workflows/setup.sh
         pwd
         ls -ltrah
+        ls -ltrah .zig
+        ls -ltrah .zig/zig
         zig build -Doptimize="ReleaseFast" -Dcpu="kryo" $ZIGFLAGS
     - name: Pack output
       run: |

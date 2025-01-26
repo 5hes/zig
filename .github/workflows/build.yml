@@ -10,7 +10,7 @@ concurrency:
 env:
   LINK: 'https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.2847+db8ed730e.tar.xz'
   LLVM_VERSION: 19
-  ZIGFLAGS: '-Dtarget="aarch64-linux-musl" -Duse-llvm=true -Dstatic-llvm=false -Denable-llvm=true -Ddev=full -Duse-zig-libcxx=true -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace -Ddebug-extensions=false -Dflat=true --zig-lib-dir "$PWD/.zig/zig/lib"'
+  ZIGFLAGS: '-Dtarget="aarch64-linux-musl" -Duse-llvm=true -Dstatic-llvm=false -Denable-llvm=true -Ddev=full -Duse-zig-libcxx=true -Dstrip=true -Dvalue-interpret-mode=direct -Dvalue-tracing=false -fno-reference-trace -Ddebug-extensions=false -Dflat=true --zig-lib-dir "/home/runner/work/zig/zig/.zig/zig/lib"'
 jobs:
   CreatTag:
     runs-on: ubuntu-latest
@@ -37,12 +37,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build
       run: |
-        pwd
         . .github/workflows/setup.sh
-        pwd
-        ls -ltrah
-        ls -ltrah .zig
-        ls -ltrah .zig/zig
         zig build -Doptimize="ReleaseFast" -Dcpu="kryo" $ZIGFLAGS
     - name: Pack output
       run: |

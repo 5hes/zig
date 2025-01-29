@@ -8,9 +8,10 @@ curl -o zig.tar.xz $LINK
 tar -xf zig.tar.xz && rm zig.tar.xz
 mv * zig && cd zig && mkdir bin && mv zig bin && export PATH=$PATH:$PWD/bin
 cd ../..
-sudo apt-get install llvm-19 clang-19 lld-19 llvm-19-dev libzstd-dev
+sudo apt-get install -y llvm-19 clang-19 lld-19 llvm-19-dev libzstd-dev libclang-19-dev liblld-19-dev
 sudo update-alternatives --install /usr/bin/llvm-config llvm-config /usr/lib/llvm-19/bin/llvm-config 100
 llvm-config --version
 llvm-config --targets-built
 export LD_LIBRARY_PATH=/usr/local/llvm-19/lib:$LD_LIBRARY_PATH
 export LLVM_CONFIG=/usr/local/llvm-19/bin/llvm-config
+ls /usr/lib/llvm-19/lib/

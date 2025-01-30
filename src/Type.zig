@@ -22,11 +22,7 @@ const SemaError = Zcu.SemaError;
 ip_index: InternPool.Index,
 
 pub fn zigTypeTag(ty: Type, zcu: *const Zcu) std.builtin.TypeId {
-    return ty.zigTypeTagOrPoison(zcu) catch unreachable;
-}
-
-pub fn zigTypeTagOrPoison(ty: Type, zcu: *const Zcu) error{GenericPoison}!std.builtin.TypeId {
-    return zcu.intern_pool.zigTypeTagOrPoison(ty.toIntern());
+    return zcu.intern_pool.zigTypeTag(ty.toIntern());
 }
 
 pub fn baseZigTypeTag(self: Type, mod: *Zcu) std.builtin.TypeId {
@@ -2061,6 +2057,22 @@ pub fn elemType2(ty: Type, zcu: *const Zcu) Type {
     };
 }
 
+/// Given that `ty` is an indexable pointer, returns its element type. Specifically:
+/// * for `*[n]T`, returns `T`
+/// * for `[]T`, returns `T`
+/// * for `[*]T`, returns `T`
+/// * for `[*c]T`, returns `T`
+pub fn indexablePtrElem(ty: Type, zcu: *const Zcu) Type {
+    const ip = &zcu.intern_pool;
+    const ptr_type = ip.indexToKey(ty.toIntern()).ptr_type;
+    switch (ptr_type.flags.size) {
+        .many, .slice, .c => return .fromInterned(ptr_type.child),
+        .one => {},
+    }
+    const array_type = ip.indexToKey(ptr_type.child).array_type;
+    return .fromInterned(array_type.child);
+}
+
 fn shallowElemType(child_ty: Type, zcu: *const Zcu) Type {
     return switch (child_ty.zigTypeTag(zcu)) {
         .array, .vector => child_ty.childType(zcu),
@@ -2503,14 +2515,16 @@ pub fn fnCallingConvention(ty: Type, zcu: *const Zcu) std.builtin.CallingConvent
 }
 
 pub fn isValidParamType(self: Type, zcu: *const Zcu) bool {
-    return switch (self.zigTypeTagOrPoison(zcu) catch return true) {
+    if (self.toIntern() == .generic_poison_type) return true;
+    return switch (self.zigTypeTag(zcu)) {
         .@"opaque", .noreturn => false,
         else => true,
     };
 }
 
 pub fn isValidReturnType(self: Type, zcu: *const Zcu) bool {
-    return switch (self.zigTypeTagOrPoison(zcu) catch return true) {
+    if (self.toIntern() == .generic_poison_type) return true;
+    return switch (self.zigTypeTag(zcu)) {
         .@"opaque" => false,
         else => true,
     };
@@ -3784,7 +3798,6 @@ pub fn resolveFields(ty: Type, pt: Zcu.PerThread) SemaError!void {
         .bool_true => unreachable,
         .bool_false => unreachable,
         .empty_tuple => unreachable,
-        .generic_poison => unreachable,
 
         else => switch (ty_ip.unwrap(ip).getTag(ip)) {
             .type_struct,
@@ -4177,7 +4190,31 @@ pub const single_const_pointer_to_comptime_int: Type = .{
     .ip_index = .single_const_pointer_to_comptime_int_type,
 };
 pub const slice_const_u8_sentinel_0: Type = .{ .ip_index = .slice_const_u8_sentinel_0_type };
-pub const empty_tuple_type: Type = .{ .ip_index = .empty_tuple_type };
+
+pub const vector_16_i8: Type = .{ .ip_index = .vector_16_i8_type };
+pub const vector_32_i8: Type = .{ .ip_index = .vector_32_i8_type };
+pub const vector_16_u8: Type = .{ .ip_index = .vector_16_u8_type };
+pub const vector_32_u8: Type = .{ .ip_index = .vector_32_u8_type };
+pub const vector_8_i16: Type = .{ .ip_index = .vector_8_i16_type };
+pub const vector_16_i16: Type = .{ .ip_index = .vector_16_i16_type };
+pub const vector_8_u16: Type = .{ .ip_index = .vector_8_u16_type };
+pub const vector_16_u16: Type = .{ .ip_index = .vector_16_u16_type };
+pub const vector_4_i32: Type = .{ .ip_index = .vector_4_i32_type };
+pub const vector_8_i32: Type = .{ .ip_index = .vector_8_i32_type };
+pub const vector_4_u32: Type = .{ .ip_index = .vector_4_u32_type };
+pub const vector_8_u32: Type = .{ .ip_index = .vector_8_u32_type };
+pub const vector_2_i64: Type = .{ .ip_index = .vector_2_i64_type };
+pub const vector_4_i64: Type = .{ .ip_index = .vector_4_i64_type };
+pub const vector_2_u64: Type = .{ .ip_index = .vector_2_u64_type };
+pub const vector_4_u64: Type = .{ .ip_index = .vector_4_u64_type };
+pub const vector_4_f16: Type = .{ .ip_index = .vector_4_f16_type };
+pub const vector_8_f16: Type = .{ .ip_index = .vector_8_f16_type };
+pub const vector_4_f32: Type = .{ .ip_index = .vector_4_f32_type };
+pub const vector_8_f32: Type = .{ .ip_index = .vector_8_f32_type };
+pub const vector_2_f64: Type = .{ .ip_index = .vector_2_f64_type };
+pub const vector_4_f64: Type = .{ .ip_index = .vector_4_f64_type };
+
+pub const empty_tuple: Type = .{ .ip_index = .empty_tuple_type };
 
 pub const generic_poison: Type = .{ .ip_index = .generic_poison_type };
 

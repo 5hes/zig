@@ -22,7 +22,6 @@ jobs:
         tar xf zig-0.16.0-dev.1859+212968c57.tar.xz
         mv zig-0.16.0-dev.1859+212968c57/* .
         time ../.zig/zig-x86_64-linux-0.16.0-dev.1892+53ebfde6b/zig build --help
-        exit 1
 
     - name: "build"
       run: |
@@ -37,5 +36,14 @@ jobs:
         cd zig && mkdir build && cd build
         cmake .. && make install
 
+        cd ..
+        build/stage3/bin/zig build -Dtarget=aarch64-linux-none -Doptimize=ReleaseFast -Dflat=true -Dstatic-llvm=true
+
     - name: "check prefix"
-      run: ls -lah zig/build/stage3/bin/zig
+      run: |
+        ls -lah zig/build/stage3/bin/zig
+        ls -lah zig/zig-out
+        ls -lah zig/zig-out/*
+
+    - name: "build with single-threaded"
+      run: cd zig && build/stage3/bin/zig build -Dtarget=aarch64-linux-none -Doptimize=ReleaseFast -Dflat=true -Dstatic-llvm=true -Dsingle-threaded=true

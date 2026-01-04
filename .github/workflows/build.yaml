@@ -11,7 +11,7 @@ jobs:
     - name: "llvm.sh -h"
       run: |
         curl -fsSL -O https://apt.llvm.org/llvm.sh
-        chmod +x llvm.sh && ./llvm.sh --help
+        chmod +x llvm.sh && ./llvm.sh -h
 
     - name: "build"
       run: |

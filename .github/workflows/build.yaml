@@ -1,12 +1,14 @@
 name: clone and build zig master
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v5
     - run: |
         curl -fsSL -O llvm.sh https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh && ./llvm.sh --help

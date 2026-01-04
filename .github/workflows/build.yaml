@@ -20,15 +20,12 @@ jobs:
 
         curl -fsSL -O https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh && sudo ./llvm.sh 21 all
-        sudo apt-get install lld-21
+        sudo apt-get install lld-21 liblld-21-dev -y
 
         git clone --depth 1 https://codeberg.org/ziglang/zig
 
-        cd zig
-        mkdir build
-        cd build
-        cmake ..
-        make install
+        cd zig && mkdir build && cd build
+        cmake .. && make install
 
     - name: "check prefix"
       run: ls -lah zig/build/stage3/bin/zig

@@ -20,6 +20,7 @@ jobs:
 
         curl -fsSL -O https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh && sudo ./llvm.sh 21 all
+        sudo apt-get install lld-21
 
         git clone --depth 1 https://codeberg.org/ziglang/zig
 

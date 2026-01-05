@@ -50,11 +50,12 @@ jobs:
         # cmake .. -DCMAKE_BUILD_TYPE=Release -DZIG_STATIC=ON -GNinja
         cmake .. -GNinja
         time ninja install
+        export PATH=$(pwd)/stage3/bin:$PATH
 
         cd ../../ && chmod +x deps.sh && ./deps.sh
 
         cd zig
-        time build/stage3/bin/zig build -p stage3 --search-prefix "$(llvm-config-21 --prefix)" --zig-lib-dir "lib" -Dtarget=aarch64-linux-none -Doptimize=ReleaseFast -Dflat -Dstrip -Dstatic-llvm -Dpie -Dversion-string="$(build/stage3/bin/zig version)"
+        time zig build -p stage3 --search-prefix "$(llvm-config-21 --prefix)" --zig-lib-dir "lib" -Dtarget=aarch64-linux-none -Doptimize=ReleaseFast -Dflat -Dstrip -Dstatic-llvm -Dpie -Dversion-string="$(build/stage3/bin/zig version)"
 
     - name: "check prefix"
       run: |

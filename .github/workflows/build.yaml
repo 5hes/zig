@@ -37,7 +37,7 @@ jobs:
         cmake .. && make install
 
         cd ..
-        build/stage3/bin/zig build -Dtarget=aarch64-linux-none -Doptimize=ReleaseFast -Dflat=true -Dstatic-llvm=true
+        time build/stage3/bin/zig build -p stage3 --search-prefix "$(llvm-config-21 --prefix)" -Dtarget=aarch64-linux-none -Doptimize=ReleaseFast -Dflat=true -Dstatic-llvm=true
 
     - name: "check prefix"
       run: |
@@ -46,4 +46,4 @@ jobs:
         ls -lah zig/zig-out/*
 
     - name: "build with single-threaded"
-      run: cd zig && build/stage3/bin/zig build -Dtarget=aarch64-linux-none -Doptimize=ReleaseFast -Dflat=true -Dstatic-llvm=true -Dsingle-threaded=true
+      run: cd zig && time build/stage3/bin/zig build -p stage3 --search-prefix "$(llvm-config-21 --prefix)" -Dtarget=aarch64-linux-none -Doptimize=ReleaseFast -Dflat=true -Dstatic-llvm=true -Dsingle-threaded=true

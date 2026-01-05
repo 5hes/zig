@@ -52,10 +52,10 @@ jobs:
         time ninja install
         export PATH=$(pwd)/stage3/bin:$PATH
 
-        cd ../../ && chmod +x deps.sh && ./deps.sh
+        cd ../../ && chmod +x deps.sh && ./deps.sh aarch64-linux-musl
 
         cd zig
-        time zig build -p stage3 --search-prefix "$(llvm-config-21 --prefix)" --zig-lib-dir "lib" -Dtarget=aarch64-linux-none -Doptimize=ReleaseFast -Dflat -Dstrip -Dstatic-llvm -Dpie -Dversion-string="$(build/stage3/bin/zig version)"
+        time zig build -p stage3 --search-prefix "$(llvm-config-21 --prefix)" --zig-lib-dir "lib" -Dtarget=aarch64-linux-musl -Doptimize=ReleaseFast -Dflat -Dstrip -Dstatic-llvm -Dpie -Dversion-string="$(build/stage3/bin/zig version)"
 
     - name: "check prefix"
       run: |
@@ -79,7 +79,7 @@ jobs:
           zig/aarch64-linux-fast.tar.zst
 
     - name: "build with single-threaded"
-      run: cd zig && time build/stage3/bin/zig build -p stage3 --search-prefix "$(llvm-config-21 --prefix)" --zig-lib-dir "lib" -Dtarget=aarch64-linux-none -Doptimize=ReleaseFast -Dflat -Dstrip -Dstatic-llvm -Dpie -Dsingle-threaded -Dsanitize-thread -Dversion-string="$(build/stage3/bin/zig version)"
+      run: cd zig && time build/stage3/bin/zig build -p stage3 --search-prefix "$(llvm-config-21 --prefix)" --zig-lib-dir "lib" -Dtarget=aarch64-linux-musl -Doptimize=ReleaseFast -Dflat -Dstrip -Dstatic-llvm -Dpie -Dsingle-threaded -Dsanitize-thread -Dversion-string="$(build/stage3/bin/zig version)"
 
     - name: "check single-threaded"
       run: |

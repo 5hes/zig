@@ -49,7 +49,7 @@ jobs:
         cd zig && mkdir build && cd build
         // cmake .. -DCMAKE_BUILD_TYPE=Release -DZIG_STATIC=ON -GNinja
         cmake .. -GNinja
-        ninja install
+        time ninja install
 
         cd ..
         time build/stage3/bin/zig build -p stage3 --search-prefix "$(llvm-config-21 --prefix)" --zig-lib-dir "lib" -Dtarget=aarch64-linux-none -Doptimize=ReleaseFast -Dflat -Dstrip -Dstatic-llvm -Dpie -Dversion-string="$(build/stage3/bin/zig version)" -fsys=libz -fsys=libzstd

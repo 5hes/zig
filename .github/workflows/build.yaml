@@ -4,10 +4,20 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v5
+
+    - name: push a tag
+      run: |
+        git tag nightly
+        git push origin nightly || echo "tag already exist"
+
     - name: "llvm.sh -h"
       run: |
         curl -fsSL -O https://apt.llvm.org/llvm.sh
@@ -37,7 +47,7 @@ jobs:
         cmake .. && make install
 
         cd ..
-        time build/stage3/bin/zig build -p stage3 --search-prefix "$(llvm-config-21 --prefix)" -Dtarget=aarch64-linux-none -Doptimize=ReleaseFast -Dflat=true -Dstatic-llvm=true
+        time build/stage3/bin/zig build -p stage3 --search-prefix "$(llvm-config-21 --prefix)" --zig-lib-dir "lib" -Dtarget=aarch64-linux-none -Doptimize=ReleaseFast -Dflat=true -Dstrip=true -Dstatic-llvm=true -Dpie=false
 
     - name: "check prefix"
       run: |
@@ -45,5 +55,26 @@ jobs:
         ls -lah zig/zig-out
         ls -lah zig/zig-out/*
 
+    - name: "pack to tar.zst"
+      run: |
+        cd zig
+        tar --zstd -cf x86_64-linux-debug.tar.zst build/stage3/
+        tar --zstd -cf aarch64-linux-fast.tar.zst zig-out/
+        ls -lh x86_64-linux-debug.tar.zst
+        ls -lh aarch64-linux-fast.tar.zst
+
+    - uses: softprops/action-gh-release@v2.5.0
+      with:
+        tag: nightly
+        files: |
+          zig/x86_64-linux-debug.tar.zst
+          zig/
+
     - name: "build with single-threaded"
-      run: cd zig && time build/stage3/bin/zig build -p stage3 --search-prefix "$(llvm-config-21 --prefix)" -Dtarget=aarch64-linux-none -Doptimize=ReleaseFast -Dflat=true -Dstatic-llvm=true -Dsingle-threaded=true
+      run: cd zig && time build/stage3/bin/zig build -p stage3 --search-prefix "$(llvm-config-21 --prefix)" --zig-lib-dir "lib" -Dtarget=aarch64-linux-none -Doptimize=ReleaseFast -Dflat=true -Dstrip=true -Dstatic-llvm=true -Dpie=false -Dsingle-threaded=true -Dsanitize-thread=true
+
+    - name: "check single-threaded"
+      run: |
+        ls -lah zig/zig-out
+        ls -lah zig/zig-out/*
+

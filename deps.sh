@@ -7,9 +7,9 @@ ROOT="$(pwd)"
 git clone --depth 1 https://github.com/madler/zlib.git
 git clone --depth https://github.com/facebook/zstd.git
 
-cd $PREFIX
+cd $PREFIX/lib
 
-zig build-lib --name zlib \
+zig build-lib --name z \
   -target $TARGET \
   -fstrip -OReleaseFast \
   -lc \

@@ -5,9 +5,12 @@ PREFIX="$(llvm-config-21 --prefix)"
 ROOT="$(pwd)"
 
 git clone --depth 1 https://github.com/madler/zlib.git
-git clone --depth https://github.com/facebook/zstd.git
+git clone --depth 1 https://github.com/facebook/zstd.git
 
 cd $PREFIX/lib
+
+cp "zstd/lib/zstd.h" "$PREFIX/include/zstd.h"
+cp "zlib/zlib.h" "$PREFIX/include/zlib.h"
 
 zig build-lib --name zstd \
   -target $TARGET \
